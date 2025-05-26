@@ -99,7 +99,6 @@ window.addEventListener('scroll', () => {
         header.style.boxShadow = 'none';
     }
 });
-// Hero Slider Functionality
 const heroSlider = () => {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.dot');
@@ -107,9 +106,8 @@ const heroSlider = () => {
     const nextBtn = document.querySelector('.slider-next');
     let currentSlide = 0;
     let slideInterval;
-    const slideDuration = 5000; // 5 seconds
+    const slideDuration = 5000; 
     
-    // Show current slide
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
@@ -119,29 +117,24 @@ const heroSlider = () => {
         currentSlide = index;
     }
     
-    // Next slide
     function nextSlide() {
         const newIndex = (currentSlide + 1) % slides.length;
         showSlide(newIndex);
     }
     
-    // Previous slide
     function prevSlide() {
         const newIndex = (currentSlide - 1 + slides.length) % slides.length;
         showSlide(newIndex);
     }
     
-    // Start auto sliding
     function startSlider() {
         slideInterval = setInterval(nextSlide, slideDuration);
     }
     
-    // Pause auto sliding when hovering over slider
     function pauseSlider() {
         clearInterval(slideInterval);
     }
     
-    // Event listeners
     nextBtn.addEventListener('click', () => {
         nextSlide();
         pauseSlider();
@@ -162,14 +155,11 @@ const heroSlider = () => {
         });
     });
     
-    // Pause on hover
     document.querySelector('.hero-slider').addEventListener('mouseenter', pauseSlider);
     document.querySelector('.hero-slider').addEventListener('mouseleave', startSlider);
     
-    // Initialize
     showSlide(currentSlide);
     startSlider();
 };
 
-// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', heroSlider);
